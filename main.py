@@ -1,8 +1,8 @@
 from typing import Union
 
 import conexao
-import app.filmesApi as filmesApi
-import app.seriesApi as seriesApi
+import filmesApi
+import seriesApi
 
 import json
 
