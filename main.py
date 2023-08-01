@@ -19,7 +19,7 @@ def getFilmes():
                        "tipo": filme["tipo"]})
     return filmes
 
-@app.get("/filmes")
+@app.get("/series")
 def getSeries():
     buscarSeries()
     series = []
