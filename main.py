@@ -10,7 +10,6 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-
 @app.get("/filmes")
 def getFilmes():
     buscarFilmes()
