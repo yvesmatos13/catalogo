@@ -10,6 +10,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+
 @app.get("/filmes")
 def getFilmes():
     buscarFilmes()
@@ -33,7 +34,8 @@ def buscarFilmes():
     filmes = []
     filmesNovos = []
     for filme in conexao.collection.find():
-        filmes.append({"nome": filme["nome"],
+        if filme["tipo"] == "filme":
+            filmes.append({"nome": filme["nome"],
                        "tipo": filme["tipo"]})
     if not filmes:
         for filme in filmesApi.filmes:
@@ -60,10 +62,13 @@ def buscarSeries():
     series = []
     seriesNovos = []
     for serie in conexao.collection.find():
-        series.append({"nome": serie["nome"],
+        if serie["tipo"] == "serie":
+            series.append({"nome": serie["nome"],
                        "tipo": serie["tipo"]})
     if not series:
         for serie in seriesApi.series:
+            print("flag 2")
+            print(serie)
             if serie["tipo"] == "serie":
                 series.append({"nome": serie["nome"],
                                "tipo": serie["tipo"]})
